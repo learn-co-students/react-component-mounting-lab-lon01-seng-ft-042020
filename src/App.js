@@ -6,18 +6,14 @@ class App extends Component {
 
   //no props being used here, so we can use the shorthand declaration of state
   state = {
-    timerIDs: []
+    timerIDs: [], 
   }
 
 
   //Your code here:
-
-
-
-
-
-
-
+  componentDidMount() {
+    this.handleAddTimer()
+  }
 
 
   // No need to modify anything in render or the class methods below
@@ -45,8 +41,13 @@ class App extends Component {
   // adds a random number for timer ID
   handleAddTimer = () => {
     this.setState(prevState => ({
-      timerIDs: [...prevState.timerIDs, Math.floor(Math.random()*1000)]
+      timerIDs: [...prevState.timerIDs, Math.floor(Math.random() * 1000)]
     }))
+
+    // THIS WAY !!!!!!!!!!!!!!!!!!!!!!
+    //   this.setState({
+    //     timerIDs: [...this.state.timerIDs, Math.floor(Math.random() * 1000)]
+    //   })
   }
 
   // removeTimer updates state, removing any timer that matches the provided author
@@ -55,8 +56,7 @@ class App extends Component {
       timerIDs: prevState.timerIDs.filter(timer_id => timer_id !== id)
     }))
   }
-
-
 }
+
 
 export default App;
